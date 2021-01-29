@@ -44,21 +44,20 @@ app = Flask(__name__)
      
   
 # get input image from client then predict class and render respective .html page for solution
-@app.route("/predict", methods = ['GET','POST'])
+@app.route("/", methods = ['GET','POST'])
 def predict():
     if request.method == 'POST':
         file = request.files['image'] # fet input
         filename = file.filename        
         print("@@ Input posted = ", filename)
          
-        file_path = os.path.join('static/user uploaded', filename)
-        file.save(file_path)
+        
  
         print("@@ Predicting class......")
-        pred, output_page = pred_cot_dieas(cott_plant=file_path)
+        pred, output_page = pred_cot_dieas(cott_plant=filename)
                
         return render_template(output_page, pred_output = pred, user_image = file_path)
      
 # For local system &amp; cloud
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=False, port=int(os.environ.get("PORT", 5000)))
+    app.run()
