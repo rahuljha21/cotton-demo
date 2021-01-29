@@ -8,7 +8,7 @@ from keras.preprocessing.image import img_to_array
 from keras.models import load_model
  
 #load model
-model =load_model(r"C:\Users\user\Downloads\cotton1\model\cotton.hdf5")
+model =load_model(r"\model\v3_pred_cott_dis.h5")
  
 print('@@ Model loaded')
  
